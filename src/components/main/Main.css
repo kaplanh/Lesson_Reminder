@@ -1,0 +1,10 @@
+main {
+ 
+  margin: 1rem;
+  min-width: 578px;
+}
+.container {
+    padding: 1.5rem 2rem;
+    background-color: rgba(223, 121, 121, 0.2);
+    border-radius: 1rem;
+}
