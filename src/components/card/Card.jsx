@@ -2,7 +2,7 @@ import "./Card.css";
 import "bootstrap/dist/css/bootstrap.css";
 const Card = (props) => {
   return (
-    <div className="row justify-content-around align-items-center p-4 ">
+    <div className="row justify-content-between align-items-center p-4 ">
       {props.data.map((item) => {
         console.log(item);
         const { id, name, hour, image } = item;
@@ -10,7 +10,7 @@ const Card = (props) => {
           <div
             key={id}
             style={{ height: "30vh" }}
-            className="col col-sm-12 col-md-6 col-lg-4 card flex-row justify-content-around align-items-center"
+            className="col col-sm-12 col-md-6 col-lg-4 card  justify-content-between align-items-center"
           >
             <div className="card-div w-25">
               <img className="card-img" src={image} alt="" />
