@@ -9,8 +9,8 @@
 |----------|------------|
 |React - component |[Take a look at my portfolio](https://kaplanh.github.io/Portfolio_with_CssFlex/)|
 |React - props|[Visit me on Linkedin](https://www.linkedin.com/in/kaplan-h/)|
-|React - sass||    
-|Deploy with GitHub Pages | |   
+|React - Bootstrap|npm i bootstrap or yarn add bootstrap|      
+|Deploy with [Vercel](https://vercel.com/dashboard) | |   
   
 
 ---
@@ -87,35 +87,23 @@ Horoscope App(folder)
 |    |--- components (folder)
 |    |       |── header(folder)
 │    │       |     ├── Header.jsx
-│    │       |     ├── Header.scss
 │    │       |     ├── Header.css
 │    │       |
 |    |       |── main(folder)
 │    │       |     ├── Main.jsx
-│    │       |     ├── Main.scss
 │    │       |     ├── Main.css
-│    │       |     ├── Card.jsx
 │    │       |
-|    |       |── navbar(folder)
-│    │             ├── Navbar.jsx
-│    │             ├── Navbar.scss
-│    │             ├── Navbar.css
+|    |       |── card(folder)
+│    │             ├── Card.jsx
+│    │             ├── Card.css
 │    │
 |    |--- helper (folder)
-|    |       |── data.js
-│    │       |── logo.png
-│    │                      
-│    |--- scss (folder)
-|    |      ├── _reset.scss
-|    |      ├── _mixins.scss
-|    |      ├── _variables.scss
-|    |      
+|    |       |── data.js                         
 |    |       
 │    ├--- App.js
-│    ├--- App.scss
 │    ├--- App.css
-│    │--- data.js
 │    └--- index.js
+│    └--- img(folder)
 │
 │
 |--- .gitignore
@@ -128,149 +116,95 @@ Horoscope App(folder)
 ---
 ### At the end of the project, the following topics are to be covered;
 
-- sass with react
-  ```scss
-   // src/scss/_reset.scss
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-   // src/scss/_variables.scss
-       //? Colors
-     $backgroundColor:#ace0f9;
-     $cardNavBgColor: #171b20;
+- css with react
+  ```css
+ 
+   // src/scss/App.css
   
-   // src/scss/_mixins.scss
-    @mixin media-xsm {
-    @media screen and (min-width: 0px) {
-      @content;
-    }
-  }
-  
-  
-  @mixin media-sm {
-    @media screen and (min-width: 576px) {
-      @content;
-    }
-  }
+        body {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+            "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+            sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        
+          background: rgb(2, 0, 36);
+          background: linear-gradient(
+            90deg,
+            rgba(2, 0, 36, 1) 0%,
+            rgba(121, 9, 83, 1) 35%,
+            rgba(0, 212, 255, 1) 100%
+          );
+          min-height: 100vh;
+          color: white;
+        }
 
 
-
-  
-   // src/scss/app.scss
-  
-  @import './scss/reset', './scss/variables';
-
-      @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap');
-      
-      @import url('https://fonts.googleapis.com/css2?family=Hubballi&display=swap');
-      
-      body{
-          background-color: $backgroundColor;
-          font-family: 'Amatic SC', cursive;
-      }
-      
-      p{
-          font-family: 'Hubballi', cursive;
-      }
+    // src/scss/App.jss
+    import "./App.css";
 
   ```
    
 
 
 
-- Parent Component icinde json datayi map() leme
+- Component icinde json datayi map() leme
    ```jsx
-   // src/components/main/Main.jsx Parent component
+   // src/components/Card.js/ 
    
-         import { data } from "../../helpers/data";
-        import "./Main.scss";
-        import Card from "./Card";
-        const Main = () => {
-            // console.log(data);
-            return (
-                <div className="card-container">
-                    {data.map((item, i) => (
-                        // !props
-                        // ?asagi data göndermenin 1.yolu
-                        // <Card item={item} />
-                        // böyle gönderirsek diger tarafta props.item.title seklinde yakalamaliyim
-                        // ?asagi data göndermenin 2.yolu
-                        <Card key={item.id} {...item} />
-                        
-                    ))}
-                </div>
-            );
+         import "./Card.css";
+        import "bootstrap/dist/css/bootstrap.css";
+        const Card = (props) => {
+          return (
+            <div className="row justify-content-around align-items-center p-4 ">
+              {props.data.map((item) => {
+                console.log(item);
+                const { id, name, hour, image } = item;
+                return (
+                  <div
+                    key={id}
+                    style={{ height: "30vh" }}
+                    className="col col-sm-12 col-md-6 col-lg-4 card flex-row justify-content-around align-items-center"
+                  >
+                    <div className="card-div w-25">
+                      <img className="card-img" src={image} alt="" />
+                    </div>
+                    <div className="w-50">
+                      <p className="card-name-p">Lesson Name:{name}</p>
+                      <p className="card-hour-p">Lesson Hour:{hour}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          );
         };
-        export default Main;
-
-
-
-   // src/components/main/Card.jsx Child component
-   
-       const Card = (data) => {
-    // console.log("ne geliyo", data);
-    const { id, title, image, desc } = data;
-    return (
-        <div key={id} className="cards">
-            <div className="title">
-                <h1>{title}</h1>
-            </div>
-            <img src={image} alt="" />
-
-            <div className="card-over">
-                <p>{desc}</p>
-            </div>
-        </div>
-    );
-  };
-  
-  export default Card;
-
+        
+        export default Card;
   ```
    ---
-- Deploy with GitHub Pages
+- Deploy with Vercel
   
 -    ### 💻 write in Terminal 👇
 
 ```bash
-// src
- npm i gh-pages or yarn add gh-pages
+
 ```
 
 -    ### 💻  add this in scripts: "predeploy": "yarn run build",  "deploy": "gh-pages -d build" // if you use npm: "predeploy": "npm run build","deploy": "gh-pages -d build" 👇
 
   ```sh
-// src/package.json
 
-  "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject",
-        "predeploy": "yarn run build", 
-        "deploy": "gh-pages -d build"
-    },
+
 ```
    
    ### 💻  add github.io link as homepage:  "homepage": "https://kaplanh.github.io/horoscope_app", 👇
 
 ```bash
-// src/package.json
-{
-    "homepage": "https://kaplanh.github.io/horoscope_app",
-    "name": "horoscope_app",
-    "version": "0.1.0",
-    "private": true,
-    "dependencies": {
-        "gh-pages": "^6.1.1",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0",
-        "react-scripts": "5.0.1",
-        "sass": "^1.70.0"
-    },
+
 ```
 
 
@@ -278,77 +212,56 @@ Horoscope App(folder)
 -    ### 💻  write in Terminal 👇
 
   ```sh
-    yarn run deploy  or npm run deploy
+    
   ```
 
 -    ### 💻  visit your page link 👇
 
   ```sh
-  https://kaplanh.github.io/horoscope_app
+ 
  ```
 
 
-- Image üzerine geldiginde alttan yukari dogru scrolsüz metin kaydirma
+- Image üzerine geldiginde dönmeleri büyümeleri icin 
 
-  ```jsx
-   const Card = ({ title, date, image, desc }) => {
-    // const { title, date, image, desc } = props;
-    // console.log("ne geliyor", props);
-    return (
-        <div className="cards">
-            <div className="title">
-                <h1>{title}</h1>
-            </div>
-            <div className="date">
-                <h2>{date}</h2>
-            </div>
-            <img src={image} alt="" />
-            <div className="card-over">
-                <p>{desc}</p>
-            </div>
-        </div>
-    );
-  };
+  ```css
+   .card-img {
+  width: 85px;
+  height: 85px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(45deg) scale(1.1);
+  }
+    }
+    
+    .card-name-p {
+      margin-bottom: 0.35rem;
+      font-weight: bold;
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: sandybrown;
+      transition: all 1s;
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
+    .card-hour-p {
+      margin-bottom: 0;
+      font-size: 1rem;
+      /* color: sandybrown; */
+      font-weight: 800;
+      transition: all 1s;
+      &:hover {
+        transform: scale(1.3);
+      }
+    }
 
 
   ```
 
-  ~~~scss
-
-
-  
-    .cards {
-            width: 500px;
-            height: 350px;
-            position: relative;
-            overflow: hidden;        
-            &:hover .card-over {
-                transform: translate(0%);
-            }
-            &:hover img {
-                opacity: 1;
-            }
-
-        .card-over {
-            width: 500px;        
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background-color: rgba(0, 0, 0, 0.8);
-            font-size: 1.5rem;
-            z-index: 3;
-            padding: 1rem;
-            transform: translateY(100%);
-            transition: transform 0.7s;
-            max-height: 75%;
-            overflow: auto;
-            // ?scrollbari kaybetmek icin
-            &::-webkit-scrollbar{
-                display: none;
-                             }  
-               }
-      }
-  ~~~
+ 
 
   
   
