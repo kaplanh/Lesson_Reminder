@@ -5,7 +5,7 @@
 [Lesson Reminder](tour-project.gif)
 
 ---
- **What's used in this app ?** |**How added third party librarys**|  **Author** |
+ **What's used in this app ?** |**How use third party libraries**|  **Author** |
 |----------|--|------------|
 |React - component| |[Take a look at my portfolio](https://kaplanh.github.io/Portfolio_with_CssFlex/)|
 |React - props| |[Visit me on Linkedin](https://www.linkedin.com/in/kaplan-h/)|
