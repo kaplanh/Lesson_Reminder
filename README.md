@@ -1,6 +1,6 @@
 # Lesson Reminder
 
-[:point_right: Click here to see on browser](https://lesson-reminder-16ep-j8zcnj3o3-kaplanh.vercel.app/)
+![lesson reminder](https://github.com/kaplanh/Lesson_Reminder/assets/101884444/46e93dfd-1f38-44c4-bf92-0bdc079cc5fd)
 
 [Lesson Reminder](tour-project.gif)
 
