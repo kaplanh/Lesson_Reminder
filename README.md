@@ -9,7 +9,8 @@
 |----------|--|------------|
 |React - component| |[Take a look at my portfolio](https://kaplanh.github.io/Portfolio_with_CssFlex/)|
 |React - props| |[Visit me on Linkedin](https://www.linkedin.com/in/kaplan-h/)|
-|React - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/download/) |npm i bootstrap or yarn add bootstrap:[^1] ve App.js de bu sekilde import edilmeli import "bootstrap/dist/css/bootstrap.css"| |      
+|React - [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/download/) |npm i bootstrap or yarn add bootstrap:[^1] 
+ve App.js de bu sekilde import edilmeli import "bootstrap/dist/css/bootstrap.css"| |      
 |Deploy with [Vercel](https://vercel.com/dashboard) | |   |
   [^1]: + App.js de bu sekilde import edilmeli import "bootstrap/dist/css/bootstrap.css";
 
